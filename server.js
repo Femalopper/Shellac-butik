@@ -1,17 +1,26 @@
-var static = require('node-static');
+var express = require('express');
+var app = express();
 
-var port = 8000;
 
-var file = new static.Server('./public');
+app.use(express.static('public'));
 
-require('http').createServer(function (request, response) {
-    request.addListener('resp', function () {
-        file.serve(request, response, function (e, res) {
-            if(e && e.status === 404){
-                file.serveFile('/error.html', 404, {}, request, response);
-            }
-        });
-    }).resume();
-}).listen(port, function () {
-    console.log('Server started on port ' +port);
+
+app.get('/', function (req, res) {
+    res.send('<html><body><h1>Hello World</h1></body></html>');
+});
+
+app.post('/submit-data', function (req, res) {
+    res.send('POST Request');
+});
+
+app.put('/update-data', function (req, res) {
+    res.send('PUT Request');
+});
+
+app.delete('/delete-data', function (req, res) {
+    res.send('DELETE Request');
+});
+
+var server = app.listen(8000, function () {
+    console.log('Node server is running ...');
 });
