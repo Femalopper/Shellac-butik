@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+<script>
+    var request = new XMLHttpRequest();
+    request.open("POST", "http://localhost:8000/basic/resp.html", false);
+    request.send();
+    var status = request.status;
+    if(status === 200)
+        document.write("Текст ответа: " + request.responseText);
+    else if(status === 404)
+        document.write("Ресурс не найден")
+    else
+        document.write(request.statusText)
+</script>
+</body>
+</html>

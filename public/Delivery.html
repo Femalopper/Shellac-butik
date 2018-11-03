@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+       <meta charset="UTF-8"/>
+	   <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>Shellac butik</title>
+	   <link href="Delivery.css" rel="stylesheet"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="basic/wicart.js" type="text/javascript" ></script>
+		<script src="Transition.js" type="text/javascript" ></script>
+	   
+	</head>
+	
+	<body>
+	<script>
+var priceList = {
+	"001" : {"id" : "001", "subid" : {}, "name" : "Комплект Bluesky База + Топ", "price" : "250"},
+"002" : {"id" : "002", "subid" : {}, "name" : "Комплект Bluesky База/Топ/Праймер", "price" : "350"},
+"003" : {"id" : "003", "subid" : {}, "name" : "Комплект Экспресс маникюр", "price" : "500"},
+"004" : {"id" : "004", "subid" : {}, "name" : "Комплект для Shellac Базовый Bluesky", "price" : "1900"},
+"005" : {"id" : "005", "subid" : {}, "name" : "Комплект для Shellac Стартовый Bluesky", "price" : "1500"},
+"006" : {"id" : "006", "subid" : {}, "name" : "Комплект для Shellac Начальный Bluesky", "price" : "1700"},
+"007" : {"id" : "007", "subid" : {}, "name" : "Комплект для Shellac Стандарт Стиль", "price" : "2900"},
+"008" : {"id" : "008", "subid" : {}, "name" : "Комплект для Shellac Стандарт Плюс", "price" : "1600"},
+"009" : {"id" : "009", "subid" : {}, "name" : "Комплект для Shellac CosmoLac Стандарт", "price" : "3000"},
+"010" : {"id" : "010", "subid" : {}, "name" : "Комплект для Shellac Стандарт Улучшенный", "price" : "3500"},
+"011" : {"id" : "011", "subid" : {}, "name" : "Комплект для Shellac Bluesky Гибридный", "price" : "3600"},
+"012" : {"id" : "012", "subid" : {}, "name" : "Комплект для Shellac Продвинутый Bluesky", "price" : "3900"},
+	};
+</script>
+	<header>
+	<form>
+	<fieldset>
+	<legend>Войти или зарегестрироваться:</legend>
+      Имя:<br> 
+	  <input class="enter" type="text" name="username"><br>
+      Пароль:<br>
+	  <input class="enter" type="password" name="psw"><br>
+      <input class="entry_1" type="submit" value="Войти">
+     <input class="entry_2" type="button" value="Зарегистрироваться" href="#" onclick="showRegistrationForm('registration', 1)">
+	  <!---Форма регистрации-------------------------------->
+ <div id="blind_Layer" class="blind_Layer">
+<div id="registration" class="popup">
+<a href="#" onclick="closeRegistrationForm('registration', 1)" style="float:right">[закрыть]</a>
+<h2>Введите ваши контактные данные</h2>
+
+<form id="formToSend">
+<input id="fio" type="text" placeholder="Ваши фамилия и имя"  class="" />
+<input id="city" type="text" placeholder="Электронная почта"  class="text-input"/>
+<input id="phone" type="text" placeholder="Пароль" class="text-input"/>
+<input id="email" type="text" placeholder="Контактный телефон" class="" />
+</form>
+<button class="send_registration" onclick="cart.sendOrder('formToSend,overflw,bsum');" href="#">Зарегистрироваться</button>
+</div>
+</div>
+<!----------------------------------------------------->
+	 </fieldset>
+    </form>
+	<div class="logo"><img src="img/лого-3.png"/></div>
+		</header>
+	<div id="wrapper">
+		<div class="nav">
+	<ul class="mainNav">
+	  <li><a class="nav_a" href="Main.html">Главная</a></li>
+	  <li><a class="nav_a" href="Goods.html">Каталог товаров</a></li>
+	  <li><a class="nav_a" href="#">Доставка и оплата</a></li>
+	  <li><a class="nav_a" href="About_us.html">О компании</a></li>
+	  <li><a class="nav_a" href="Contacts.html">Контакты</a></li>
+	  <li id="basket"><a href="#" onclick="cart.showWinow('bcontainer', 1)"><img width="50" height="50" src="img/noun_shopping_835290.png" alt="basket"/></a></li>
+	 </ul>
+	</div>
+	<br>
+		<!---Форма для магазина-------------------------------->
+<div id="order" class="popup">
+<a href="#" onclick="cart.closeWindow('order', 0)" style="float:right">[закрыть]</a>
+<h2>Введите ваши контактные данные</h2>
+
+<form id="formToSend">
+<input id="fio" type="text" placeholder="Ваши фамилия и имя"  class="" />
+<input id="city" type="text" placeholder="Город"  class="text-input"/>
+<input id="phone" type="text" placeholder="Контактный телефон" class="text-input"/>
+<input id="email" type="text" placeholder="Электронная почта" class="" />
+<br>
+<textarea id="question" placeholder="Адрес"></textarea>
+</form>
+<button class="send_order" onclick="cart.sendOrder('formToSend,overflw,bsum');" href="#">Отправить заказ</button>
+</div>
+<!----------------------------------------------------->
+
+<!---О компании-------------------------------->
+		<div id="container">
+<h1>Доставка</h1>
+<div class="shippment">
+<h2>Курьерской службой</h2>
+<img src="img/icons8-доставка-64 (1).png" alt="shippment to door"/>
+<br>
+<br>
+Ваш заказ застрахован от повреждений во время доставки. Доставка курьерской службой по России производится без ограничений по сумме заказа. Стоимость доставки рассчитывается автоматически при оформлении заказа.
+<br>
+<br>
+Акция! Бесплатная доставка при заказе от 5000 рублей действует до конца текущего месяца.
+</div>	
+<div class="shippment">
+<h2>Забрать в магазине</h2>
+<img src="img/icons8-магазин-64.png" alt="shop"/>
+<br>
+<br>
+Вы можете забронировать нужный вам товар в любом удобном для вас магазине Shellac-butic.
+<br>
+<br>
+После того, как придет подтверждение из магазина, можно поехать в магазин, оплатить и забрать заказ.
+</div>
+<h1>Оплата</h1>
+<div class="pay">
+<h2>Наличными</h2>
+<img src="img/icons8-без-кредитных-карт-64.png" alt="shop"/>
+<br>
+<br>
+Оплатить заказ наличными можно на кассе магазина или при получении у курьера.
+После оформления заказа на сайте менеджер свяжется с вами в течение 30 минут. 
+Пожалуйста, проверяйте правильность указания вашего телефонного номера — 
+заказ доставляется только после подтверждения. Мы обрабатываем заказы 
+ежедневно с 9:00 до 22:00. Если вы оформите ваш заказ ночью, 
+он будет обработан в следующий рабочий день нашего интернет-магазина. 
+Вы всегда можете оформить заказ по телефону 8 (800) 700-19-44 
+и задать все необходимые вопросы нашим менеджерам.
+</div>
+		</div>
+	<address>
+		2017 - 2018 © Интернет магазин
+        Shellac-butic. Все права защищены.<br/>
+		<a id="a2" href="mailto:lina-kursk@mail.ru">Email us</a><br/>
+		Юридический адрес: г. Москва, ул. Новая Басманная, д. 15<br/>
+		Телефон для связи: 8 981 881 36 26<br/>
+		</address>
+		</div>
+		<script>
+		
+var cart;
+var config;
+var wiNumInputPrefID;
+/* WI-GLOBAL-VARS */
+$(document).ready(function(){  
+    cart = new WICard("cart");
+    config = {'clearAfterSend':true, 'showAfterAdd':false};
+    
+    cart.init("basketwidjet", config);
+    /* WI-MODULES */
+    
+    
+});	
+document.addEventListener('visibilitychange', function(e) {
+cart.init("basketwidjet", config);
+}, false);
+</script>
+	</body>
+</html>

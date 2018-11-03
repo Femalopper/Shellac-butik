@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+       <meta charset="UTF-8"/>
+	   <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>Shellac butik</title>
+	   <link href="Goods_styles.css" rel="stylesheet"/>
+	   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	   <script src="basic/wicart.js"  type="text/javascript" ></script>
+		
+	</head>
+	
+	<body>
+	<script>
+var priceList = {
+	"001" : {"id" : "001", "subid" : {}, "name" : "Комплект Bluesky База + Топ", "price" : "250"},
+"002" : {"id" : "002", "subid" : {}, "name" : "Комплект Bluesky База/Топ/Праймер", "price" : "350"},
+"003" : {"id" : "003", "subid" : {}, "name" : "Комплект Экспресс маникюр", "price" : "500"},
+"004" : {"id" : "004", "subid" : {}, "name" : "Комплект для Shellac Базовый Bluesky", "price" : "1900"},
+"005" : {"id" : "005", "subid" : {}, "name" : "Комплект для Shellac Стартовый Bluesky", "price" : "1500"},
+"006" : {"id" : "006", "subid" : {}, "name" : "Комплект для Shellac Начальный Bluesky", "price" : "1700"},
+"007" : {"id" : "007", "subid" : {}, "name" : "Комплект для Shellac Стандарт Стиль", "price" : "2900"},
+"008" : {"id" : "008", "subid" : {}, "name" : "Комплект для Shellac Стандарт Плюс", "price" : "1600"},
+"009" : {"id" : "009", "subid" : {}, "name" : "Комплект для Shellac CosmoLac Стандарт", "price" : "3000"},
+"010" : {"id" : "010", "subid" : {}, "name" : "Комплект для Shellac Стандарт Улучшенный", "price" : "3500"},
+"011" : {"id" : "011", "subid" : {}, "name" : "Комплект для Shellac Bluesky Гибридный", "price" : "3600"},
+"012" : {"id" : "012", "subid" : {}, "name" : "Комплект для Shellac Продвинутый Bluesky", "price" : "3900"},
+	};
+</script>
+	<header>
+	<form>
+	<fieldset>
+	<legend>Войти или зарегестрироваться:</legend>
+      Имя:<br> 
+	  <input class="enter" type="text" name="username"><br>
+      Пароль:<br>
+	  <input class="enter" type="password" name="psw"><br>
+      <input class="entry_1" type="submit" value="Войти">
+      <input class="entry_2" type="button" value="Зарегистрироваться" href="#" onclick="showRegistrationForm('registration', 1)">
+	  <!---Форма регистрации-------------------------------->
+<div id="blind_Layer" class="blind_Layer">
+<div id="registration" class="popup">
+<a href="#" onclick="closeRegistrationForm('registration', 1)" style="float:right">[закрыть]</a>
+<h2>Введите ваши контактные данные</h2>
+
+<form id="formToSend">
+<input id="fio" type="text" placeholder="Ваши фамилия и имя"  class="" />
+<input id="city" type="text" placeholder="Электронная почта"  class="text-input"/>
+<input id="phone" type="text" placeholder="Пароль" class="text-input"/>
+<input id="email" type="text" placeholder="Контактный телефон" class="" />
+</form>
+<button class="send_registration" onclick="cart.sendOrder('formToSend,overflw,bsum');" href="#">Зарегистрироваться</button>
+</div>
+</div>
+<!----------------------------------------------------->
+	 </fieldset>
+    </form>
+	<div class="logo"><img src="img/лого-3.png"/></div>
+		<div class="nav">
+	<ul class="mainNav">
+	  <li><a href="Main.html">Главная</a></li>
+	  <li><a href="Goods.html">Каталог товаров</a></li>
+	  <li><a href="Delivery.html">Доставка и оплата</a></li>
+	  <li><a href="About_us.html">О компании</a></li>
+	  <li><a href="Contacts.html">Контакты</a></li>
+	  <li id="basket"><a href="#" onclick="cart.showWinow('bcontainer', 1)"><img width="50" height="50" src="img/noun_shopping_835290.png" alt="basket"/></a></li>
+	 </ul>
+	</div>
+	</header>
+	<br>
+		<!---Форма для магазина-------------------------------->
+<div id="order" class="popup">
+<a href="#" onclick="cart.closeWindow('order', 0)" style="float:right">[закрыть]</a>
+<h2>Введите ваши контактные данные</h2>
+
+<form id="formToSend">
+<input id="fio" type="text" placeholder="Ваши фамилия и имя"  class="" />
+<input id="city" type="text" placeholder="Город"  class="text-input"/>
+<input id="phone" type="text" placeholder="Контактный телефон" class="text-input"/>
+<input id="email" type="text" placeholder="Электронная почта" class="" />
+<br>
+<textarea id="question" placeholder="Адрес"></textarea>
+</form>
+<button class="send_order" onclick="cart.sendOrder('formToSend,overflw,bsum');" href="#">Отправить заказ</button>
+</div>
+<!----------------------------------------------------->
+
+<!---Товары-------------------------------->
+	<h1>Комплект Bluesky<q>База+ Топ</q></h1>
+	<div class="cell"><a href="element7.html"><img src="img/7.jpg" alt="element_7"/></a>
+		<figcaption>Комплект для Shellac
+		<br>
+		<q>Стандарт Стиль</q>
+		  </figcaption>
+		  <div class="price">
+		  <p class="price0">3500 руб.</p><p class="price1">2900 руб.</p>
+		  </div>
+		  <button class="add-to-cart" type="button" onclick="cart.addToCart(this, '007', priceList['007'])"><div class="add">Добавить в корзину</div><img width="45" height="45" src="img/noun_shopping_835290.png"/></button>
+		</div>
+		<div class="description">Состав набора:
+		<br>
+Набор "Стандарт Bluesky Стиль" состоит из 16 самых необходимых товаров для создания гель-лакового маникюра в домашних условиях.
+<br>
+Готовый набор позволит Вам сэкономить Ваше время на выборе необходимых материалов, а также Ваши деньги на посещение салонов красоты
+<br>
+<br>
+<br>
+<br>
+1. Лампа SUN LED/UV 24Вт —мощная, легкая и компактная, имеет сенсор движения
+<br>
+2. Bluesky Rubber base coat, Каучуковая основа для гель-лака
+<br>
+3. Bluesky Rubber top coat, Каучуковый топ для гель-лака
+<br>
+4. Bluesky Primer
+<br>
+5. Гель-лак Bluesky  4 шт
+<br>
+6. Обезжириватель для ногтей и снятия липкого слоя 100мл, Severina
+<br>
+7. Средство для снятия гель-лака с "носиком" 80мл, Severina
+<br>
+8. Антибактериальное средство для рук и ногтей 80мл, Severina
+<br>
+9. Пилка тонкая bluesky 180/240
+<br>
+10. Бафик полировщик 4х сторонний желтый
+<br>
+11. Безворсовые салфетки (70шт)
+<br>
+12. Апельсиновые палочки 25шт.
+<br>
+13. Щетка для удаления пыли (модель №2)
+<br>
+14. Фольга White Line, серебряная (без коробки) 25м.
+<br>
+<br>
+</div>
+		<br>
+		<address>
+		2017 - 2018 © Интернет магазин
+        Shellac-butic. Все права защищены.<br/>
+		<a id="a2" href="mailto:lina-kursk@mail.ru">Email us</a><br/>
+		Юридический адрес: г. Москва, ул. Новая Басманная, д. 15<br/>
+		Телефон для связи: 8 981 881 36 26<br/>
+		</address>
+		
+		<script>
+		
+var cart;
+var config;
+var wiNumInputPrefID;
+/* WI-GLOBAL-VARS */
+$(document).ready(function(){  
+    cart = new WICard("cart");
+    config = {'clearAfterSend':true, 'showAfterAdd':false};
+    
+    cart.init("basketwidjet", config);
+    /* WI-MODULES */
+    
+    
+});	
+document.addEventListener('visibilitychange', function(e) {
+cart.init("basketwidjet", config);
+}, false);
+</script>
+	</body>
+</html>
