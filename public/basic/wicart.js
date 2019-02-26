@@ -13,6 +13,7 @@ var local = 	{
 			"basket" : "Корзина",
 			"num" : "Кол-во",
 			"send" : "Спасибо за покупку!\nМы свяжемся с Вами в ближайшее время",
+	        "registration": "Вы зарегистрированы. Для того, чтобы подтвердить регистрацию, перейдите по ссылке на почте",
 			"goods" : "Товаров",
 			"amount" : "на сумму"
 			};
@@ -297,7 +298,7 @@ this.addToCartGoods = function() {
                 swal({
                     title:    'Товар удален!',
                     text: 'Перейти в корзину',
-                confirmButtonColor: 'rgba(170,20,115,0.8)'
+                    confirmButtonColor: 'rgba(170,20,115,0.8)'
                 })
             }
         })
@@ -306,35 +307,37 @@ this.addToCartGoods = function() {
 			this.widjetObj.html(local.basket_is_empty);	
 			} 
 		}
-	this.sendOrder = function(domElm)	
-		{
-		var bodyHTML = "";
-		var arr = domElm.split(",");
-		
-		for (var f=0; f < arr.length; f++) {
-		
-			bodyHTML +=  this.getForm(arr[f]) + "<br><br>";	
-			
-			}
-		$('.basket_num_buttons').remove();
 
-		var request = new XMLHttpRequest();
-            request.onreadystatechange = function() {
-                if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                    document.write("Текст ответа: " + request.responseText);
-                }
-            };
-            request.open("POST", "http://localhost/resp", false);
-            request.send("subj=Order WICart");
-            };
+            this.sendOrder = function (domElm) {
+                var bodyHTML = "";
+                var arr = domElm.split(",");
 
-            this.changeCart = function () {
-            cart.closeWindow("bcontainer", 1);
-            cart.closeWindow("order", 0);
-            if (cart.CONFIG.clearAfterSend) {
-                cart.clearBasket();
-            }
-            alert(local.send);
+                for (var f=0; f < arr.length; f++) {
+
+                    bodyHTML +=  this.getForm(arr[f]) + "<br><br>";
+
+                };
+                $('.basket_num_buttons').remove();
+                $.post("http://localhost:8000/submit-data?subj=Order WICart", {"order": bodyHTML}).done(function (data) {
+                    cart.closeWindow("bcontainer", 1);
+                    cart.closeWindow("order", 0);
+                    if (cart.CONFIG.clearAfterSend) {
+                        cart.clearBasket();
+                    }
+                    swal({
+                        title: 'Спасибо за покупку!\nМы свяжемся с Вами в ближайшее время',
+                        text: 'Вернуться на страницу',
+                        confirmButtonColor: 'rgba(170,20,115,0.8)'
+                    })
+                });
+            };
+        this.sendRegistform = function (domElm) {
+            swal({
+                title: 'Вы зарегистрированы.\nДля того, чтобы подтвердить регистрацию, перейдите по ссылке на почте',
+                text: 'Вернуться на страницу',
+                confirmButtonColor: 'rgba(170,20,115,0.8)',
+            })
+            $("#blind_Layer").hide();
         };
 
 	this.getForm = function (formId)
@@ -366,13 +369,32 @@ this.addToCartGoods = function() {
 					elm.parentNode.replaceChild(spanReplace, elm);		
 					}
 			});
-	
-	
 	return copyForm.innerHTML;
 		}
 	}
-	
-	
+function checkParams() {
+    var name = $('#fio').val();
+    var city = $('#city').val();
+    var phone = $('#phone').val();
+    var mail = $('#email').val();
+    var question = $('#question').val();
+    if(name.length  >=2 && mail.length  >=7 && phone.length  >=7 && city.length >=3 && question.length >=7) {
+        $('#sub').removeAttr('disabled');
+    } else {
+        $('#sub').attr('disabled', 'disabled');
+    }
+}
+function checkParamsreg() {
+    var namereg = $('#name').val();
+    var mailaddr = $('#mailto').val();
+    var pass = $('#password').val();
+    var tel = $('#telephone').val();
+    if(namereg.length >=2 && mailaddr.length >=7 && pass.length  >=7 && tel.length >=7) {
+        $('#send_reg').removeAttr('disabled');
+    } else {
+        $('#send_reg').attr('disabled', 'disabled');
+    }
+}
 	function showRegistrationForm(win, blind)
 		{
 		$("#" + win).show();

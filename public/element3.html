@@ -8,7 +8,8 @@
 	   <link href="Goods_styles.css" rel="stylesheet"/>
 	   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	   <script src="basic/wicart.js"  type="text/javascript" ></script>
-	   
+		<script src="sweet_alert.js" type="text/javascript" ></script>
+		<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 	</head>
 	
 	<body>
@@ -44,13 +45,13 @@ var priceList = {
 <a href="#" onclick="closeRegistrationForm('registration', 1)" style="float:right">[закрыть]</a>
 <h2>Введите ваши контактные данные</h2>
 
-<form id="formToSend">
-<input id="fio" type="text" placeholder="Ваши фамилия и имя"  class="" />
-<input id="city" type="text" placeholder="Электронная почта"  class="text-input"/>
-<input id="phone" type="text" placeholder="Пароль" class="text-input"/>
-<input id="email" type="text" placeholder="Контактный телефон" class="" />
-</form>
-<button class="send_registration" onclick="cart.sendOrder('formToSend,overflw,bsum');" href="#">Зарегистрироваться</button>
+	<form id="formToSend">
+		<input id="name" onkeyup="checkParamsreg()" type="text" placeholder="Ваши фамилия и имя"  class="" />
+		<input id="mailto" onkeyup="checkParamsreg()" type="text" placeholder="Электронная почта"  class="text-input"/>
+		<input id="password" onkeyup="checkParamsreg()" type="password" placeholder="Пароль" class="text-input"/>
+		<input id="telephone" onkeyup="checkParamsreg()" type="text" placeholder="Контактный телефон" class="" />
+	</form>
+	<button id="send_reg" class="send_registration" onclick="cart.sendRegistform('formToSend,overflw,bsum');" href="#" disabled>Зарегистрироваться</button>
 </div>
 </div>
 <!----------------------------------------------------->
@@ -74,20 +75,20 @@ var priceList = {
 <a href="#" onclick="cart.closeWindow('order', 0)" style="float:right">[закрыть]</a>
 <h2>Введите ваши контактные данные</h2>
 
-<form id="formToSend">
-<input id="fio" type="text" placeholder="Ваши фамилия и имя"  class="" />
-<input id="city" type="text" placeholder="Город"  class="text-input"/>
-<input id="phone" type="text" placeholder="Контактный телефон" class="text-input"/>
-<input id="email" type="text" placeholder="Электронная почта" class="" />
-<br>
-<textarea id="question" placeholder="Адрес"></textarea>
-</form>
-<button class="send_order" onclick="cart.sendOrder('formToSend,overflw,bsum');" href="#">Отправить заказ</button>
+	<form id="formToSend">
+		<input id="fio" onkeyup="checkParams()" type="text" placeholder="Ваши фамилия и имя"  class="" />
+		<input id="city" onkeyup="checkParams()" type="text" placeholder="Город"  class="text-input"/>
+		<input id="phone" onkeyup="checkParams()" type="text" placeholder="Контактный телефон" class="text-input"/>
+		<input id="email" onkeyup="checkParams()" type="text" placeholder="Электронная почта" class="" />
+		<br>
+		<textarea id="question" onkeyup="checkParams()" placeholder="Адрес"></textarea>
+	</form>
+	<button id="sub" class="send_order" onclick="cart.sendOrder('formToSend,overflw,bsum')" href="#" disabled>Отправить заказ</button>
 </div>
 <!----------------------------------------------------->
 
 <!---Товары-------------------------------->
-	<h1>Комплект Bluesky<q>База+ Топ</q></h1>
+	<h1>Комплект Bluesky<q>Экспресс маникюр</q></h1>
 	<div class="cell"><a href="element3.html"><img src="img/6594e1124afe92d0d711010384d50b76.d93bb8cb777e361babb40cb9881b2b19.jpg" alt="element_3"/></a>
 		 <figcaption>Комплект 
 		 <br>
@@ -96,7 +97,7 @@ var priceList = {
 		  <div class="price">
 		  <p class="price0">900 руб.</p><p class="price1">500 руб.</p>
 		  </div>
-		  <button class="add-to-cart" type="button" onclick="cart.addToCart(this, '003', priceList['003'])"><div class="add">Добавить в корзину</div><img width="45" height="45" src="img/noun_shopping_835290.png"/></button>
+		  <button class="add-to-cart" type="button" onclick="cart.addToCart(this, '003', priceList['003']); cart.addToCartGoods()"><div class="add">Добавить в корзину</div><img width="45" height="45" src="img/noun_shopping_835290.png"/></button>
 		</div>
 		<div class="description">Состав набора:
 		<br>

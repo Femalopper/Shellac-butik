@@ -46,13 +46,13 @@ var priceList = {
 <a href="#" onclick="closeRegistrationForm('registration', 1)" style="float:right">[закрыть]</a>
 <h2>Введите ваши контактные данные</h2>
 
-<form id="formToSend">
-<input id="fio" type="text" placeholder="Ваши фамилия и имя"  class="" />
-<input id="email" type="text" placeholder="Электронная почта"  class="text-input"/>
-<input id="password" type="text" placeholder="Пароль" class="text-input"/>
-<input id="phone" type="text" placeholder="Контактный телефон" class="" />
-</form>
-<button class="send_registration" onclick="cart.sendOrder('formToSend,overflw,bsum');" href="#">Зарегистрироваться</button>
+	<form id="formToSend">
+		<input id="name" onkeyup="checkParamsreg()" type="text" placeholder="Ваши фамилия и имя"  class="" />
+		<input id="mailto" onkeyup="checkParamsreg()" type="text" placeholder="Электронная почта"  class="text-input"/>
+		<input id="password" onkeyup="checkParamsreg()" type="password" placeholder="Пароль" class="text-input"/>
+		<input id="telephone" onkeyup="checkParamsreg()" type="text" placeholder="Контактный телефон" class="" />
+	</form>
+<button id="send_reg" class="send_registration" onclick="cart.sendRegistform('formToSend,overflw,bsum');" href="#" disabled>Зарегистрироваться</button>
 </div>
 </div>
 <!----------------------------------------------------->
@@ -80,14 +80,14 @@ var priceList = {
 <h2>Введите ваши контактные данные</h2>
 
 <form id="formToSend">
-<input id="fio" type="text" placeholder="Ваши фамилия и имя"  class="" />
-<input id="city" type="text" placeholder="Город"  class="text-input"/>
-<input id="phone" type="text" placeholder="Контактный телефон" class="text-input"/>
-<input id="email" type="text" placeholder="Электронная почта" class="" />
+<input id="fio" onkeyup="checkParams()" type="text" placeholder="Ваши фамилия и имя"  class="" />
+<input id="city" onkeyup="checkParams()" type="text" placeholder="Город"  class="text-input"/>
+<input id="phone" onkeyup="checkParams()" type="text" placeholder="Контактный телефон" class="text-input"/>
+<input id="email" onkeyup="checkParams()" type="text" placeholder="Электронная почта" class="" />
 <br>
-<textarea id="question" placeholder="Адрес"></textarea>
+<textarea id="question" onkeyup="checkParams()" placeholder="Адрес"></textarea>
 </form>
-<button class="send_order" onclick="cart.sendOrder('formToSend,overflw,bsum'); cart.changeCart()" href="#">Отправить заказ</button>
+<button id="sub" class="send_order" onclick="cart.sendOrder('formToSend,overflw,bsum')" href="#" disabled>Отправить заказ</button>
 </div>
 <!----------------------------------------------------->
 
@@ -104,7 +104,7 @@ var priceList = {
 		  <div class="price">
 		  <p class="price0">400 руб.</p><p class="price1">250 руб.</p>
 		  </div>
-		  <button class="add-to-cart" type="button" onclick="cart.addToCart(this, '001', priceList['001']); cart.addToCartGoods()"><div class="add">Добавить в корзину</div><img width="45" height="45" src="img/noun_shopping_835290.png"/></button>
+		  <button class="add-to-cart" type="button" onclick="cart.addToCart(this, '001', priceList['001']); cart.addToCartGoods()"><div class="add">Добавить в корзину</div><img src="img/noun_shopping_835290.png"/></button>
 	</div>
 		<div class="cell"><a href="element6.html"><img src="img/6.jpg" alt="element_6"/></a>
 		 <figcaption>Комплект для Shellac
@@ -114,7 +114,7 @@ var priceList = {
 		   <div class="price">
 		  <p class="price0">2300 руб.</p><p class="price1">1700 руб.</p>
 		  </div>
-		  <button class="add-to-cart" type="button" onclick="cart.addToCart(this, '006', priceList['006'])"><div class="add">Добавить в корзину</div><img width="45" height="45" src="img/noun_shopping_835290.png"/></button>
+		  <button class="add-to-cart" type="button" onclick="cart.addToCart(this, '006', priceList['006']); cart.addToCartGoods()"><div class="add">Добавить в корзину</div><img src="img/noun_shopping_835290.png"/></button>
 		</div>
 		<div class="cell"><a href="element11.html"><img src="img/11.jpg" alt="element_11"/></a>
 		 <figcaption>Комплект для Shellac
@@ -124,7 +124,7 @@ var priceList = {
 		  <div class="price">
 		  <p class="price0">3900 руб.</p><p class="price1">3600 руб.</p>
 		  </div>
-		  <button class="add-to-cart" type="button" onclick="cart.addToCart(this, '011', priceList['011'])"><div class="add">Добавить в корзину</div><img width="45" height="45" src="img/noun_shopping_835290.png"/></button>
+		  <button class="add-to-cart" type="button" onclick="cart.addToCart(this, '011', priceList['011']); cart.addToCartGoods()"><div class="add">Добавить в корзину</div><img src="img/noun_shopping_835290.png"/></button>
 		</div>
 		<div class="cell"><a href="element12.html"><img src="img/12.jpg" alt="element_12"/></a>
 		 <figcaption>Комплект для Shellac
@@ -134,12 +134,12 @@ var priceList = {
 		  <div class="price">
 		  <p class="price0">4200 руб.</p><p class="price1">3900 руб.</p>
 		  </div>
-		  <button class="add-to-cart" type="button" onclick="cart.addToCart(this, '012', priceList['012'])"><div class="add">Добавить в корзину</div><img width="45" height="45" src="img/noun_shopping_835290.png"/></button>
+		  <button class="add-to-cart" type="button" onclick="cart.addToCart(this, '012', priceList['012']); cart.addToCartGoods()"><div class="add">Добавить в корзину</div><img src="img/noun_shopping_835290.png"/></button>
 		</div>
 </div>	
 </div>
 <div class="container">
-    <h1><i>Shellac-butik – все для профессионального маникюра и дизайна ногтей</i></h1>
+    <h2><i>Shellac-butik – все для профессионального маникюра и дизайна ногтей</i></h2>
 	<br>
 	<br>
 	В интернет-магазине Shellac-Butik для покупателя доступна вся необходимая косметика по уходу за ресницами, бровями и ногтями. В ассортименте представлена продукция для макияжа, наращивания ногтей, маникюра, ухода за кожей тела и волосами, а также проведения других косметических процедур.
@@ -149,7 +149,7 @@ var priceList = {
     <br>
 	<br>
 	<br>
-	<h2>Широкий выбор продукции</h2>
+	<h3>Широкий выбор продукции</h3>
 	<br>
 	<br>
 	Ассортимент продукции наполнен натуральной косметикой и надежными инструментами, тщательно подобранными в соответствии с новыми направлениями и технологиями в области маникюра и дизайна ногтей, макияжа и ухода за волосами. На полках магазина можно выбрать:
@@ -164,7 +164,7 @@ var priceList = {
 	</ul>
 	<br>
 	<br>
-	<h2>Почему отдать предпочтение стоит именно нам</h2>
+	<h3>Почему отдать предпочтение стоит именно нам</h3>
 	<br>
 	<br>
 	Мы реализуем качественный товар, который иногда можно увидеть в других интернет-магазинах. Однако благодаря нашей плодотворной работе мы может предложить покупателю лучшие условия для покупки:
@@ -188,7 +188,6 @@ var priceList = {
 		</address>
 		</div>
 		<script>
-		
 var cart;
 var config;
 var wiNumInputPrefID;
@@ -199,8 +198,7 @@ $(document).ready(function(){
     
     cart.init("basketwidjet", config);
     /* WI-MODULES */
-    
-    
+
 });	
 document.addEventListener('visibilitychange', function(e) {
 cart.init("basketwidjet", config);
